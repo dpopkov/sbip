@@ -1,13 +1,18 @@
 package learn.sbip.p02springapplication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Properties;
 
 @SpringBootApplication
 public class P02springApplication {
+
+    private static final Logger log = LoggerFactory.getLogger(P02springApplication.class);
 
     public static void main(String[] args) {
         Properties properties = new Properties();
@@ -16,7 +21,9 @@ public class P02springApplication {
         SpringApplication application = new SpringApplication(P02springApplication.class);
         application.setWebApplicationType(WebApplicationType.SERVLET);
         application.setDefaultProperties(properties);
-        application.run();
+        ConfigurableApplicationContext context = application.run();
+        DbConfiguration dbConfig = context.getBean(DbConfiguration.class);
+        log.info(dbConfig.toString());
     }
 
 }
