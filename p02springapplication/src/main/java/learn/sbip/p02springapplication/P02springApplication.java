@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 
 import java.util.Properties;
 
@@ -24,6 +25,10 @@ public class P02springApplication {
         ConfigurableApplicationContext context = application.run();
         DbConfiguration dbConfig = context.getBean(DbConfiguration.class);
         log.info(dbConfig.toString());
+
+        Environment environment = context.getBean(Environment.class);
+        String appTimeout = environment.getProperty("app.timeout");
+        log.info("appTimeout = {}", appTimeout);
     }
 
 }

@@ -21,3 +21,17 @@ _(in reversed order)_
             * use `SpringApplication.setDefaultProperties()` method
             * use environment variables
             * use command-line arguments
+    * Using OS environment variables
+        * set environment variable:
+            * in Windows: `<VAR>=<value>`
+            * in Linux: `export <VAR>=<value>`
+            * or use IDE capabilities
+        * reference the environment variable in configuration file
+            * example: `app.timeout=${APP_TIMEOUT}`
+        * access in code: `environment.getProperty("app.timeout")`
+    * Properties order precedence from lower to higher:
+        * SpringApplication - in code
+        * @PropertySource - in code
+        * Config data file - in files
+        * OS environment variable - in files+shell
+        * Command line arguments - in shell
