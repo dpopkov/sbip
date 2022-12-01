@@ -66,3 +66,16 @@ _(projects in reversed order)_
     }
     ```
     * Do `mvn clean package` and enjoy auto-completion and quick access to documentation in application.properties file
+
+#### Executing code on Spring Boot application startup
+* Using `CommandLineRunner` to execute code at Spring Boot application startup
+```java
+@Order(1)
+@Component
+public class AppStartup implements CommandLineRunner {
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("AppStartup executed as a Spring Component");
+    }
+}
+```
