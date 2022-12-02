@@ -79,3 +79,19 @@ public class AppStartup implements CommandLineRunner {
     }
 }
 ```
+
+#### Validate user data using Bean Validation
+* Add dependency for validation:
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
+* Use annotations: `@NotBlank`, `@NotEmpty`, `@NotNull`, `@Min`, `@Max`, `@Pattern`, `@Size`, `@Email`
+* Use `javax.validation.Validator`:
+```java
+Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+Set<ConstraintViolation<Course>> violations = validator.validate(course);
+violations.forEach(v -> log.error("A constraint violation has occurred: {}", v.getMessage()));
+```
