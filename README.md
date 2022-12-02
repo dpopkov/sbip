@@ -1,5 +1,11 @@
 # Spring Boot Examples
 
+* [Project: p02springapplication](#project-p02springapplication)
+    * [Managing Configurations](#managing-configurations)
+    * [Defining custom properties](#defining-custom-properties)
+    * [Executing code on Spring Boot application startup](#executing-code-on-spring-boot-application-startup)
+    * [Validate user data using Bean Validation](#validate-user-data-using-bean-validation)
+
 _(projects in reversed order)_
 
 ### [Project: p02springapplication](p02springapplication)
@@ -95,3 +101,6 @@ Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 Set<ConstraintViolation<Course>> violations = validator.validate(course);
 violations.forEach(v -> log.error("A constraint violation has occurred: {}", v.getMessage()));
 ```
+
+
+[Top](#spring-boot-examples)
